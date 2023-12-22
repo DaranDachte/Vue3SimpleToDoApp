@@ -38,42 +38,67 @@ onMounted(() => {
 
 <template>
   <main
-    class="flex relative w-full min-h-screen flex-col justify-center items-center bg-white"
+    class="flex relative w-full min-h-screen flex-col justify-center items-center bg-[#c8e5e7]"
   >
-    <section class="greeting">
-      <h3 class="title">ToDo Application</h3>
-    </section>
-    <div class="input-section">
-      <section class="create-todo">
-        <form @submit.prevent="addTodo">
-          <h3>What do you plan on doing?</h3>
-          <input type="text" placeholder="add your todo" v-model="input" />
-          <input type="submit" value="Add todo" />
-        </form>
-      </section>
-    </div>
-    <div class="todo-section">
-      <section class="todo-list">
-        <h2 v-show="todos.length === 0">No Todos Here</h2>
-        <div class="list">
+    <div class="bg-[]">
+      <h3 class="text-[3rem] font-black text-[#00563B]">ToDo Application</h3>
+
+      <form @submit.prevent="addTodo">
+        <h3 class="text-[#00563B] font-semibold text-[1.2rem]">
+          With using Vue 3 framework and Tailwind
+        </h3>
+        <div class="flex justify-between items-center">
+          <div class="">
+            <input
+              type="text"
+              class="bg-[#e7ffde] outline-0 rounded h-[2rem]"
+              placeholder="add your todo"
+              v-model="input"
+            />
+          </div>
           <div
-            v-for="todo in todos"
-            :class="`todo-item ${todo.isDone && 'done'}`"
+            class="text-[#00563B] bg-[#e7ffde] font-semibold ml-[0.3rem] p-[0.3rem] rounded"
           >
-            <label>
-              <input type="checkbox" v-model="todo.isDone" />
-            </label>
-            <div class="todo-content">
-              <input type="text" v-model="todo.text" />
+            <input
+              class="cursor-pointer h-[1.5rem]"
+              type="submit"
+              value="Add todo"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="">
+      <h2 v-show="todos.length === 0">No Todos Here</h2>
+      <div class="">
+        <div
+          v-for="todo in todos"
+          :class="`todo-item ${todo.isDone && 'done'}`"
+        >
+          <div
+            class="flex items-center justify-between bg-[#e7ffde] h-[3rem] my-[1rem] rounded px-[1rem]"
+          >
+            <div class="pr-[0.3rem]">
+              <label>
+                <input type="checkbox" v-model="todo.isDone" />
+              </label>
             </div>
-            <div class="actions">
-              <button class="delete" @click="deleteToDo(todo.id)">
+
+            <div class="text-[#00563B]">
+              <p>{{ todo.text }}</p>
+            </div>
+
+            <div class="ml-[0.3rem] p-[0.3rem] rounded bg-[#E34234]">
+              <button
+                class="text-[#00563B] font-semibold"
+                @click="deleteToDo(todo.id)"
+              >
                 Delete
               </button>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   </main>
 </template>
