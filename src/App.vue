@@ -44,15 +44,15 @@ onMounted(() => {
       <h3 class="text-[3rem] font-black text-[#00563B]">ToDo Application</h3>
 
       <form @submit.prevent="addTodo">
-        <h3 class="text-[#00563B] font-semibold text-[1.2rem]">
+        <h3 class="text-[#00563B] font-semibold text-[1.2rem] mb-[1rem]">
           With using Vue 3 framework and Tailwind
         </h3>
         <div class="flex justify-between items-center">
           <div class="">
             <input
               type="text"
-              class="bg-[#e7ffde] outline-0 rounded h-[2rem]"
-              placeholder="add your todo"
+              class="bg-[#e7ffde] outline-0 rounded h-[2rem] text-[#00563B] text-center placeholder:text-[#00563B]"
+              placeholder="create your todo "
               v-model="input"
             />
           </div>
@@ -62,19 +62,21 @@ onMounted(() => {
             <input
               class="cursor-pointer h-[1.5rem]"
               type="submit"
-              value="Add todo"
+              value="I'll do it!"
             />
           </div>
         </div>
       </form>
     </div>
     <div class="">
-      <h2 v-show="todos.length === 0">No Todos Here</h2>
+      <h2
+        class="text-[#00563B] mt-[1rem] font-semibold text-[1.3rem]"
+        v-show="todos.length === 0"
+      >
+        No Todos Here
+      </h2>
       <div class="">
-        <div
-          v-for="todo in todos"
-          :class="`todo-item ${todo.isDone && 'done'}`"
-        >
+        <div v-for="todo in todos" :class="` ${todo.isDone && 'line-through'}`">
           <div
             class="flex items-center justify-between bg-[#e7ffde] h-[3rem] my-[1rem] rounded px-[1rem]"
           >
@@ -88,7 +90,7 @@ onMounted(() => {
               <p>{{ todo.text }}</p>
             </div>
 
-            <div class="ml-[0.3rem] p-[0.3rem] rounded bg-[#E34234]">
+            <div class="ml-[0.3rem] p-[0.3rem] rounded bg-[#E34234]/50">
               <button
                 class="text-[#00563B] font-semibold"
                 @click="deleteToDo(todo.id)"
